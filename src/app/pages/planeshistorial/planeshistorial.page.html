@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="warning">
+    <ion-title text-center>Carreras</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ 
+  <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="searchChanged($event)"></ion-searchbar>
+ 
+ 
+  <ion-list>
+    <ion-item button *ngFor="let item of (results | async)" [routerLink]="['/', 'planeshistorial', item.idplanestudio]">
+ 
+    
+      <ion-label text-wrap>
+        <h3>{{ item.idplanestudio }}</h3>
+        <b>{{ item.nombrecarrera }}</b>
+      </ion-label>
+ 
+    
+    </ion-item>
+ 
+  </ion-list>
+ 
+</ion-content>
+
+
