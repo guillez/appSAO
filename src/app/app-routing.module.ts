@@ -8,7 +8,8 @@ const routes: Routes = [
   { path: 'movies/:id', loadChildren: './pages/movie-details/movie-details.module#MovieDetailsPageModule' },
   { path: 'menu', loadChildren: './pages/menu/menu.module#MenuPageModule' },
   { path: 'planeshistorial', loadChildren: './pages/planeshistorial/planeshistorial.module#PlaneshistorialPageModule' },
-  { path: 'historial', loadChildren: './pages/historial/historial.module#HistorialPageModule' }
+  { path: 'historial', loadChildren: './pages/historial/historial.module#HistorialPageModule' },
+  { path: 'historial/:id', loadChildren: './pages/historial/historial.module#HistorialPageModule' }
 ];
  
 @NgModule({

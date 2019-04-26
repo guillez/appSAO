@@ -19,10 +19,14 @@ export class LoginPage implements OnInit {
   }
 
   onSubmitLogin(){
+    //$scope.token = token;
+    //localStorage.setItem("token", $scope.token);
+    //$scope.token = localStorage.getItem("token");
+    //if(localStorage.getItem("token") !== null && localStorage.getItem("token") !== ""){//go ahead and authenticate them without getting a new token.}
 
     //this.navCtrl.push(movies);
-    if (this.email=='usuario' ) {
-      if(this.password=='1234') {
+    if (this.email=='u' ) {
+      if(this.password=='1') {
           //console.log(this.email);
     this.navCtrl.navigateForward('menu');
      } }

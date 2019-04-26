@@ -1,6 +1,7 @@
+import { SaoService, SearchType } from '../../services/sao.service';
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import { AuthService } from '../../services/auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-historial',
@@ -9,13 +10,39 @@ import { AuthService } from '../../services/auth.service';
 })
 export class HistorialPage implements OnInit {
 
-  constructor(public navCtrl: NavController,private authService: AuthService ) { }
+  results: Observable<any>;
+  searchTerm: string = '';
+  type: SearchType = SearchType.all;
 
-  ngOnInit() {
-  }
+  constructor(public navCtrl: NavController,private saoService: SaoService ) { }
+
+
 
   onSubmitHistorial(){
-   // this.navCtrl.navigateForward('historial');
+    this.navCtrl.navigateForward('historial');
   }
+
+  searchChanged() {
+    // Call our service function which returns an Observable
+    this.results = this.saoService.buscarPlanes(this.searchTerm, this.type);
+  }
+
+
+
+  ngOnInit() {
+    this.results = this.saoService.buscarPlanes(this.searchTerm, this.type);
+  }
+
+
+  
+
+
+
+
+
+
+
+
+
 
 }

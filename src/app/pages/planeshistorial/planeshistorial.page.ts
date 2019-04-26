@@ -18,9 +18,10 @@ export class PlaneshistorialPage implements OnInit {
   constructor(public navCtrl: NavController, private saoService: SaoService) { }
 
   ngOnInit() {
+    this.results = this.saoService.buscarPlanes(this.searchTerm, this.type);
   }
 
-  onSubmitHistorial(){
+  onSubmitHistorial(idplanestudio){
     this.navCtrl.navigateForward('historial');
   }
   searchChanged() {
@@ -29,4 +30,6 @@ export class PlaneshistorialPage implements OnInit {
   }
 
 
+
+  
 }
