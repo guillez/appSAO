@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 //import { MoviesPage } from '../movies/movies.page';
 import { NavController } from '@ionic/angular';
+import { Storage } from '@ionic/storage';
+import { SaoService, SearchType } from '../../services/sao.service';
+import { Observable, observable } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -12,26 +15,27 @@ export class LoginPage implements OnInit {
 
   email: string;
   password: string;
+  results: Observable<any>;
+  sf_id: string;
 
-  constructor(public navCtrl: NavController,private authService: AuthService ) { }
+  constructor(public navCtrl: NavController,private authService: AuthService,private storage: Storage, private saoService: SaoService) { }
 
   ngOnInit() {
   }
 
-  onSubmitLogin(){
-    //$scope.token = token;
-    //localStorage.setItem("token", $scope.token);
-    //$scope.token = localStorage.getItem("token");
-    //if(localStorage.getItem("token") !== null && localStorage.getItem("token") !== ""){//go ahead and authenticate them without getting a new token.}
 
-    //this.navCtrl.push(movies);
-    if (this.email=='u' ) {
-      if(this.password=='1') {
-          //console.log(this.email);
-    this.navCtrl.navigateForward('menu');
-     } }
-    // this.authService.login(this.email, this.password);
-     // this.authService.login(this.email);
+
+  onSubmitLogin(){
+
+
+    this.results = this.saoService.login(this.email, this.password);
+    this.results.forEach(val => {
+     // console.log('id is', val[0].id);
+      this.storage.set('sf_id', val[0].id);
+      if( val[0].id > 0) this.navCtrl.navigateForward('menu');
+    });
+
+ 
 
   }
 

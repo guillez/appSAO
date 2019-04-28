@@ -1,14 +1,14 @@
 <ion-header>
-  <ion-toolbar color="warning">
-    <ion-title text-center>Carreras</ion-title>
+  <ion-toolbar  color="warning">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Carreras</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
- 
-  
- 
-  <ion-list>
+   <ion-list>
     <ion-item button *ngFor="let item of (results | async)" [routerLink]="['/', 'historial', { id: item.idplanestudio } ]">
  
     

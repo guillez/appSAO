@@ -30,7 +30,7 @@ export class HistorialPage implements OnInit {
 
 
   ngOnInit() {
-    this.results = this.saoService.buscarPlanes(this.searchTerm, this.type);
+    this.results = this.saoService.buscarHistorial(this.searchTerm, this.type);
   }
 
 

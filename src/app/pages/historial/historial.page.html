@@ -1,23 +1,49 @@
 <ion-header>
-  <ion-toolbar color="warning">
-    <ion-title text-center>Historial Academico</ion-title>
-  </ion-toolbar>
-</ion-header>
+    <ion-toolbar  color="warning">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Historial Academico</ion-title>
+    </ion-toolbar>
+  </ion-header>
 
 <ion-content>
  
-  
+    <p>R=Regular</p>
+    <p>L=Libre</p>
+    <p>B=Baja</p>
+    <p>A=Aprobado</p>
  
   <ion-list>
     <ion-item button *ngFor="let item of (results | async)" [routerLink]="['/', 'historial', { id: item.idplanestudio } ]">
- 
-    
-      <ion-label text-wrap>
-        <b>{{ item.nombrecarrera }}</b>
-       
-      </ion-label>
-      
-    
+
+        <ion-label text-wrap>
+         
+        <ion-grid>
+
+            <ion-row>
+                <ion-col>
+                    <p>{{ item.nombre }}</p>
+                </ion-col>
+               
+              </ion-row>
+
+            <ion-row>
+              <ion-col>
+                  <p>{{ item.estado }}</p>
+              </ion-col>
+              <ion-col col-8>
+                  <p>{{ item.fecha }}</p>
+              </ion-col>
+              <ion-col>
+                  <p>{{ item.fechavencimiento }}</p>
+              </ion-col>
+            </ion-row>
+            
+          </ion-grid>
+
+
+        </ion-label>
     </ion-item>
  
   </ion-list>
