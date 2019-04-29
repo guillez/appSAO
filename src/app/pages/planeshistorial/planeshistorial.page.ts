@@ -22,6 +22,7 @@ export class PlaneshistorialPage implements OnInit {
   ngOnInit() {
     
    this.storage.get('documento').then((val) => {
+    console.log('dd: ', val);
     this.documento= val;
   });
   
@@ -29,7 +30,7 @@ export class PlaneshistorialPage implements OnInit {
   }
 
   onSubmitHistorial(idplanestudio){
-    console.log('pe: ', idplanestudio);
+    //console.log('pe: ', idplanestudio);
     this.navCtrl.navigateForward('historial');
   }
   searchChanged() {

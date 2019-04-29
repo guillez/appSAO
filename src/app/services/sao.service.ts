@@ -56,7 +56,7 @@ export class SaoService {
   * @returns Observable with the search results
   */
  buscarHistorial(ida: string, type: SearchType): Observable<any> {
-  console.log('ida: ', ida);
+  //console.log('ida: ', ida);
   return this.http.get(`${this.urlhistorialalumno}?ida=${encodeURI(ida)}`).pipe(map(results => results['Search']));
   
 

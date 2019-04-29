@@ -25,6 +25,9 @@ export class MenuPage implements OnInit {
   }
 
   onSubmitPlaneshistorial(){
+    this.storage.get('documento').then((val) => {
+      console.log('doc is', val);
+    });
     this.navCtrl.navigateForward('planeshistorial');
   }
 
