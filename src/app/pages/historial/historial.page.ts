@@ -2,6 +2,9 @@ import { SaoService, SearchType } from '../../services/sao.service';
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Observable } from 'rxjs';
+//import { ActivatedRoute, ParamMap } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-historial',
@@ -12,14 +15,15 @@ export class HistorialPage implements OnInit {
 
   results: Observable<any>;
   searchTerm: string = '';
+  valor: string = '';
   type: SearchType = SearchType.all;
 
-  constructor(public navCtrl: NavController,private saoService: SaoService ) { }
+  constructor(public navCtrl: NavController,private saoService: SaoService, private route: ActivatedRoute ) { }
 
 
 
   onSubmitHistorial(){
-    this.navCtrl.navigateForward('historial');
+   // this.navCtrl.navigateForward('historial');
   }
 
   searchChanged() {
@@ -30,7 +34,12 @@ export class HistorialPage implements OnInit {
 
 
   ngOnInit() {
-    this.results = this.saoService.buscarHistorial(this.searchTerm, this.type);
+    
+    this.route.paramMap.subscribe(params => {
+     this.valor= params.get("id");
+  })
+  
+    this.results = this.saoService.buscarHistorial(this.valor, this.type);
   }
 
 

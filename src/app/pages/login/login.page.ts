@@ -27,15 +27,16 @@ export class LoginPage implements OnInit {
 
   onSubmitLogin(){
 
-
     this.results = this.saoService.login(this.email, this.password);
     this.results.forEach(val => {
      // console.log('id is', val[0].id);
       this.storage.set('sf_id', val[0].id);
+      this.storage.set('documento', val[0].documento);
+      this.storage.set('idp', val[0].idp);
+      this.storage.set('apellido', val[0].apellido); 
+      this.storage.set('nombre', val[0].nombre);                
       if( val[0].id > 0) this.navCtrl.navigateForward('menu');
     });
-
- 
 
   }
 

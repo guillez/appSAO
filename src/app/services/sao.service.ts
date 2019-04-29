@@ -18,7 +18,7 @@ export enum SearchType {
 })
 
 export class SaoService {
-
+  documento: string = "";
   urlhistorialalumno = 'http://localhost/api/sao/historial/index.php';
   urlplanesalumno = 'http://localhost/api/sao/planesalumno/index.php'; 
   urlacceso = 'http://localhost/api/sao/acceso/index.php'; 
@@ -38,7 +38,11 @@ export class SaoService {
   */
   buscarPlanes(dni: string, type: SearchType): Observable<any> {
 
-    return this.http.get(`${this.urlplanesalumno}?dni=${encodeURI(dni)}`).pipe(map(results => results['Search']));
+    this.storage.get('documento').then((val) => {
+      this.documento= val;
+      //console.log('documento2: ', this.documento);
+    });
+    return this.http.get(`${this.urlplanesalumno}?dni=${encodeURI(this.documento)}`).pipe(map(results => results['Search']));
     
   }
  
@@ -51,9 +55,9 @@ export class SaoService {
   * @param {SearchType} type movie, series, episode or empty
   * @returns Observable with the search results
   */
- buscarHistorial(dni: string, type: SearchType): Observable<any> {
-
-  return this.http.get(`${this.urlhistorialalumno}?dni=${encodeURI(dni)}`).pipe(map(results => results['Search']));
+ buscarHistorial(ida: string, type: SearchType): Observable<any> {
+  console.log('ida: ', ida);
+  return this.http.get(`${this.urlhistorialalumno}?ida=${encodeURI(ida)}`).pipe(map(results => results['Search']));
   
 
 }

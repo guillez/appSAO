@@ -13,6 +13,7 @@ export class MenuPage implements OnInit {
   constructor(public navCtrl: NavController,private authService: AuthService,private storage: Storage ) { }
 
   ngOnInit() {
+          
            this.storage.get('email').then((val) => {
           //console.log('email is', val);
         });

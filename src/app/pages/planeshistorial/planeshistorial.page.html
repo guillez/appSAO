@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar  color="warning">
+  <ion-toolbar  color="gold">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
@@ -9,12 +9,13 @@
 
 <ion-content>
    <ion-list>
-    <ion-item button *ngFor="let item of (results | async)" [routerLink]="['/', 'historial', { id: item.idplanestudio } ]">
+    <ion-item button *ngFor="let item of (results | async)" [routerLink]="['/', 'historial', { id: item.ida } ]">
  
     
       <ion-label text-wrap>
         <b>{{ item.nombrecarrera }}</b>
-       
+        
+     
       </ion-label>
       
     
